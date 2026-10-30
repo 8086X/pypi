@@ -5,15 +5,10 @@ Kaggle 심장질환 데이터 918건의 탐색적 분석과 7개 분류 모델 �
 
 
 | 성명 | 학번 | 학과 |
-
 |---|---|---|
-
 | 서용위 | 2023045441 | 경영학과 |
-
 | 석완군 | 2023029025 | 경영학과 |
-
 | 장형윤 | 2022001876 | 경영학과 |
-
 | 왕윤택 | 2024093427 | 유기나노공학 |
 
 
@@ -68,17 +63,11 @@ https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction
 
 
 | 참고 PDF의 분석 단계 | 이번 분석의 적용 |
-
 |---|---|
-
 | 서론 및 데이터 소개 | 분류 목표, 출처, 12개 변수와 품질 점검 |
-
 | EDA 그림 1부터 8 | 목표 분포, 결측, 분포, 집단 비교, 상관, 산점도, IQR, 집단별 표지 비율 |
-
 | 전처리 및 7개 모델 비교 | Pipeline 기반 대체와 원핫 인코딩, 5겹 훈련 교차검증 |
-
 | 결과 그림 9부터 15 | 성능, ROC와 PR, 혼동 행렬, 중요도, 교차검증, 레이더 |
-
 | 토론 및 결론 | 임계값, 제거 실험, 표본 불균형과 외부 검증 한계 |
 
 
@@ -103,31 +92,18 @@ https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction
 
 
 | 변수 | 의미 | 단위 또는 값 |
-
 |---|---|---|
-
 | Age | 연령 | 세, 연속형 |
-
 | Sex | 기록상 성별 | M / F |
-
 | ChestPainType | 흉통 유형 | TA 전형적, ATA 비전형적, NAP 비협심증성, ASY 무증상 |
-
 | RestingBP | 안정시 혈압 | mmHg, 연속형 |
-
 | Cholesterol | 혈청 콜레스테롤 | mg/dL, 연속형 |
-
 | FastingBS | 공복혈당 구분 | 120 mg/dL 초과 1, 그 외 0 |
-
 | RestingECG | 안정시 심전도 | Normal / ST / LVH |
-
 | MaxHR | 검사 중 최대 심박수 | 회/분, 연속형 |
-
 | ExerciseAngina | 운동 유발 협심증 | Y / N |
-
 | Oldpeak | 운동 관련 ST 변화 | 수치형, 음수와 0 보존 |
-
 | ST_Slope | 최대 운동시 ST 분절 기울기 | Up / Flat / Down |
-
 | HeartDisease | 목표 표지 | 0 부재 / 1 존재 |
 
 
@@ -143,17 +119,11 @@ Cholesterol의 단위는 UCI 원자료 계열의 mg/dL를 사용했다. FastingB
 
 
 | 변수 | 관측 n | 평균 | 표준편차 | 중앙값 | 범위 |
-
 |---|---|---|---|---|---|
-
 | Age | 918 | 53.51 | 9.43 | 54.00 | 28 ~ 77 |
-
 | RestingBP | 917 | 132.54 | 18.00 | 130.00 | 80 ~ 200 |
-
 | Cholesterol | 746 | 244.64 | 59.15 | 237.00 | 85 ~ 603 |
-
 | MaxHR | 918 | 136.81 | 25.46 | 138.00 | 60 ~ 202 |
-
 | Oldpeak | 918 | 0.89 | 1.07 | 0.60 | -2.6 ~ 6.2 |
 
 
@@ -193,11 +163,8 @@ Cholesterol의 단위는 UCI 원자료 계열의 mg/dL를 사용했다. FastingB
 
 
 | 콜레스테롤 원시 기록 | 표지 0 | 표지 1 | 표지 1 비율 |
-
 |---|---|---|---|
-
 | 0이 아닌 관측값 | 391 | 355 | 47.59% |
-
 | 0값 | 19 | 153 | 88.95% |
 
 
@@ -241,17 +208,11 @@ IQR 기준의 극단값은 오류와 같은 뜻이 아니다. 높은 혈압이�
 
 
 | 변수 | n0 / n1 | 평균 0 | 평균 1 | Welch t | Holm p |
-
 |---|---|---|---|---|---|
-
 | Age | 328/406 | 51.28 | 55.92 | -6.784 | 7.61e-11 |
-
 | RestingBP | 328/406 | 130.82 | 134.53 | -2.812 | 0.0101 |
-
 | Cholesterol | 315/290 | 241.91 | 251.61 | -1.996 | 0.0463 |
-
 | MaxHR | 328/406 | 148.07 | 126.93 | 12.119 | 3.64e-30 |
-
 | Oldpeak | 328/406 | 0.42 | 1.22 | -11.495 | 1.57e-27 |
 
 
@@ -326,15 +287,10 @@ IQR 기준 극단값은 Age 0건, RestingBP 20건, Cholesterol 20건, MaxHR 2건
 
 
 | 단계 | 연속형 5개 | 범주형 6개 |
-
 |---|---|---|
-
 | 결측 처리 | 훈련 중앙값과 결측 지표 | 훈련 최빈값 |
-
 | 변환 | StandardScaler | OneHotEncoder |
-
 | 미지 값 | 훈련 평균 및 표준편차로 변환 | handle_unknown=ignore |
-
 | 학습 범위 | 교차검증 내부 훈련 폴드 | 교차검증 내부 훈련 폴드 |
 
 
@@ -362,21 +318,13 @@ ColumnTransformer와 Pipeline으로 전처리와 모델을 연결했다[5]. 각 
 
 
 | 모델 | 주요 설정 | 비교 목적 |
-
 |---|---|---|
-
 | Logistic Regression | C=1, max_iter=2000 | 해석 가능한 선형 기준선 |
-
 | Decision Tree | max_depth=5, min_samples_leaf=5 | 단일 트리의 복잡도 제한 |
-
 | Random Forest | 250 trees, min_samples_leaf=2, max_features=sqrt | 트리 평균화로 분산 감소 |
-
 | XGBoost | 200 trees, max_depth=3, learning_rate=0.05, subsample=0.9, colsample_bytree=0.9 | 얕은 트리의 점진적 결합 |
-
 | LightGBM | 200 trees, num_leaves=15, learning_rate=0.05, min_child_samples=20 | 리프 중심 부스팅 |
-
 | Gradient Boosting | 150 trees, max_depth=2, learning_rate=0.05 | 전통적 부스팅 비교 |
-
 | MLP | 64 32 16, alpha=0.01, max_iter=1500, early_stopping=True | 비선형 신경망 비교 |
 
 
@@ -404,21 +352,13 @@ ColumnTransformer와 Pipeline으로 전처리와 모델을 연결했다[5]. 각 
 
 
 | 모델 | 훈련 CV 평균 AUC | 폴드 간 표준편차 |
-
 |---|---|---|
-
 | Random Forest | 0.9331 | 0.0279 |
-
 | XGBoost | 0.9324 | 0.0313 |
-
 | Gradient Boosting | 0.9285 | 0.0363 |
-
 | Logistic Regression | 0.9280 | 0.0435 |
-
 | LightGBM | 0.9255 | 0.0279 |
-
 | MLP | 0.9056 | 0.0358 |
-
 | Decision Tree | 0.8774 | 0.0523 |
 
 
@@ -443,21 +383,13 @@ Random Forest 평균 0.9331이 가장 높아 최종 모델로 선택했다. XGBo
 
 
 | 모델 | 정확도 | 정밀도 | 재현율 | F1 | AUC |
-
 |---|---|---|---|---|---|
-
 | Random Forest | 0.9022 | 0.8889 | 0.9412 | 0.9143 | 0.9387 |
-
 | XGBoost | 0.8913 | 0.9100 | 0.8922 | 0.9010 | 0.9347 |
-
 | Gradient Boosting | 0.9022 | 0.9038 | 0.9216 | 0.9126 | 0.9320 |
-
 | Logistic Regression | 0.8967 | 0.8952 | 0.9216 | 0.9082 | 0.9324 |
-
 | LightGBM | 0.8696 | 0.8900 | 0.8725 | 0.8812 | 0.9272 |
-
 | MLP | 0.8696 | 0.8611 | 0.9118 | 0.8857 | 0.9321 |
-
 | Decision Tree | 0.7880 | 0.8182 | 0.7941 | 0.8060 | 0.8638 |
 
 
@@ -516,11 +448,8 @@ Random Forest는 양성 102건 중 96건을 검출하고 6건을 놓쳤다. 음�
 
 
 | RF 임계값 | TN | FP | FN | TP | 재현율 | 특이도 |
-
 |---|---|---|---|---|---|---|
-
 | 0.5000 | 70 | 12 | 6 | 96 | 0.9412 | 0.8537 |
-
 | 0.4934 OOF 선택 | 69 | 13 | 6 | 96 | 0.9412 | 0.8415 |
 
 
@@ -561,13 +490,9 @@ Random Forest에서 ST_Slope를 섞었을 때 AUC 감소 평균은 0.1085, 반�
 
 
 | 로지스틱 회귀 입력 | 훈련 CV 평균 AUC | 기본 대비 변화 |
-
 |---|---|---|
-
 | 원래 11개 변수 | 0.9280 | 기준 |
-
 | Cholesterol와 그 결측 지표 제외 | 0.9226 | -0.0054 |
-
 | Age×Oldpeak와 MaxHR÷Age 추가 | 0.9271 | -0.0009 |
 
 
@@ -579,11 +504,8 @@ Random Forest에서 ST_Slope를 섞었을 때 AUC 감소 평균은 0.1085, 반�
 
 
 | 기록상 성별 | 테스트 n | 양성 n | 재현율 | Wilson 95% 구간 | AUC |
-
 |---|---|---|---|---|---|
-
 | F | 38 | 6 | 0.8333 | 0.4365~0.9699 | 0.9635 |
-
 | M | 146 | 96 | 0.9479 | 0.8838~0.9776 | 0.9175 |
 
 
@@ -700,26 +622,14 @@ Random Forest의 훈련 5겹 평균 AUC는 0.9331, 보류 테스트 AUC는 0.938
 
 
 | 항목 | 값 |
-
 |---|---|
-
 | 분할 | train_test_split test_size=0.2, stratify=y, random_state=42 |
-
 | 교차검증 | StratifiedKFold n_splits=5, shuffle=True, random_state=42 |
-
 | 중요도 | 테스트 순열 15회, scoring=roc_auc, random_state=42 |
-
 | AUC 구간 | 테스트 클래스 내 복원추출 2000회, 2.5% 및 97.5% 분위수 |
-
 | 실행 버전 | Python 3.12.14, numpy 2.3.5, pandas 2.2.3, sklearn 1.8.0, scipy 1.17.0, xgboost 3.4.1, lightgbm 4.7.0 |
 
 
-
-CSV SHA256
-948420b084d8a3a0ca42b8419fce9aee175879e43f8aedf712377899a67aa49b
-
-
-조원별 실제 수행 내역은 제공되지 않아 임의로 기재하지 않았다. 함께 제공한 발표 원고의 4인 분담은 발표 연습을 위한 제안이며 실제 기여도 기록을 대신하지 않는다.
 
 
 
@@ -777,7 +687,4 @@ https://xgboost.readthedocs.io/en/stable/python/python_api.html
 https://lightgbm.readthedocs.io/en/stable/Python-API.html
 
 
-9 제공된 G12 Final Report. 파이마 인디언 당뇨병 데이터셋 머신러닝 기반 종합 분석 보고서. 문서 구조와 분석 항목 참고 자료.
 
-
-웹 자료 확인 및 CSV 확보일은 2026년 10월 30일이다. 데이터 변수 설명의 검증 근거로 Kaggle 및 UCI 출처를 사용하고, 공개 미러는 실제 바이트 확보 경로로 구분하여 기재하였다.
